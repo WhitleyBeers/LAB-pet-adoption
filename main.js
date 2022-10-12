@@ -242,3 +242,19 @@ const pets = [
   ];
 
   console.log("Hiya!")
+
+  const app = document.querySelector("#app")
+  
+  for (let i = 0; i < pets.length; i++) {
+
+    document.querySelector("#app").innerHTML +=    
+    `<div class="card text-center border-success mb-3" style="width: 18rem;">
+    <div class="card-header">${pets[i].name}</div>
+      <img src="${pets[i].imageUrl}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Color: ${pets[i].color}</p>
+        <p class="card-text">Special Skill: ${pets[i].specialSkill}</p>
+        <p class="card-footer">${pets[i].type}</p>
+      </div>
+    </div>`
+  }

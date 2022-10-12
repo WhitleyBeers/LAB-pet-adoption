@@ -1,3 +1,12 @@
 body {
   background-color:aquamarine;
 }
+
+div#app {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 10px;
+}
