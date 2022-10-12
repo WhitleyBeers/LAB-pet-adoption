@@ -249,12 +249,12 @@ const pets = [
 
     document.querySelector("#app").innerHTML +=    
     `<div class="card text-center border-success mb-3" style="width: 18rem;">
-    <div class="card-header">${pets[i].name}</div>
+      <h5 class="card-header text-bg-success p-3">${pets[i].name}</h5>
       <img src="${pets[i].imageUrl}" class="card-img-top">
       <div class="card-body">
-        <p class="card-text">Color: ${pets[i].color}</p>
-        <p class="card-text">Special Skill: ${pets[i].specialSkill}</p>
-        <p class="card-footer">${pets[i].type}</p>
+        <p class="card-text"><span class="bold">Color:</span> ${pets[i].color}</p>
+        <p class="card-text"><span class="bold">Special Skill:</span> ${pets[i].specialSkill}</p>
+        <p class="card-footer text-bg-danger p-3">${pets[i].type}</p>
       </div>
     </div>`
   }
