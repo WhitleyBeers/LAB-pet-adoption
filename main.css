@@ -5,8 +5,13 @@ body {
 div#app {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
   margin: 10px;
+}
+
+span.bold {
+  font-weight: bold;
 }
