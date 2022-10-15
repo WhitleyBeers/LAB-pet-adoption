@@ -15,3 +15,13 @@ div#app {
 span.bold {
   font-weight: bold;
 }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin: 35px;
+}
+
+button {
+  margin: 15px;
+}

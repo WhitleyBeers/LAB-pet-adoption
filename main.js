@@ -243,18 +243,71 @@ const pets = [
 
   console.log("Hiya!")
 
-  const app = document.querySelector("#app")
+  const app = document.querySelector('#app')
+  const showDogs = document.querySelector('#dogs');
+  const showCats = document.querySelector('#cats');
+  const showDinos = document.querySelector('#dinos');
+  const showAll = document.querySelector('#show-all');
   
   for (let i = 0; i < pets.length; i++) {
-
-    document.querySelector("#app").innerHTML +=    
-    `<div class="card text-center border-success mb-3" style="width: 18rem;">
-      <h5 class="card-header text-bg-success p-3">${pets[i].name}</h5>
-      <img src="${pets[i].imageUrl}" class="card-img-top">
-      <div class="card-body">
-        <p class="card-text"><span class="bold">Color:</span> ${pets[i].color}</p>
-        <p class="card-text"><span class="bold">Special Skill:</span> ${pets[i].specialSkill}</p>
-        <p class="card-footer text-bg-danger p-3">${pets[i].type}</p>
-      </div>
-    </div>`
+  document.querySelector("#app").innerHTML +=    
+  `<div class="card text-center border-success mb-3" style="width: 18rem;">
+    <h5 class="card-header text-bg-success p-3">${pets[i].name}</h5>
+    <img src="${pets[i].imageUrl}" class="card-img-top">
+    <div class="card-body">
+      <p class="card-text"><span class="bold">Color:</span> ${pets[i].color}</p>
+      <p class="card-text"><span class="bold">Special Skill:</span> ${pets[i].specialSkill}</p>
+      <p class="card-footer text-bg-danger p-3">${pets[i].type}</p>
+    </div>
+  </div>`
   }
+
+  const renderToDom = (divId, htmlToRender) => {
+    const selectedDiv = document.querySelector(divId);
+    selectedDiv.innerHTML = htmlToRender;
+  };
+
+  const cardsOnDom = (array) => {
+    let domString = "";
+    for (const pets of array) {
+      domString += `<div class="card text-center border-success mb-3" style="width: 18rem;">
+      <h5 class="card-header text-bg-success p-3">${pets.name}</h5>
+      <img src="${pets.imageUrl}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text"><span class="bold">Color:</span> ${pets.color}</p>
+        <p class="card-text"><span class="bold">Special Skill:</span> ${pets.specialSkill}</p>
+        <p class="card-footer text-bg-danger p-3">${pets.type}</p>
+      </div>
+    </div>`;
+    }
+    renderToDom("#app", domString);
+  }
+
+  const filter = (array, typeString) => {
+    const petArray = [];
+    for (const pet of array) {
+      if (pet.type === typeString) {
+        petArray.push(pet);
+      }
+    }
+    return petArray;
+  }
+
+  showDogs.addEventListener('click', () => {
+    const adoptDogs = filter(pets, 'dog');
+    cardsOnDom(adoptDogs);
+  })
+
+  showCats.addEventListener('click', () => {
+    const adoptCats = filter(pets, 'cat');
+    cardsOnDom(adoptCats);
+  })
+
+  showDinos.addEventListener('click', () => {
+    const adoptDinos = filter(pets, 'dino');
+    cardsOnDom(adoptDinos);
+  })
+
+  showAll.addEventListener('click', () => {
+    cardsOnDom(pets);
+  })
