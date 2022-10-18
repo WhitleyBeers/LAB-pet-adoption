@@ -18,6 +18,38 @@
 
 <div id="app"></div>
 
+<div class="form">
+  <div>
+  <h2>Submit a Pet!</h2>
+  </div>
+
+  <form>
+    <div class="form-floating mb-3 col-sm-5">
+      <input type="text" class="form-control" id="name" placeholder="Pet Name" required>
+      <label for="floatingInput">Name</label>
+    </div>
+    <div class="form-floating mb-3 col-sm-5">
+      <input type="text" class="form-control" id="color" placeholder="Pet Color" required>
+      <label for="floatingInput">Color</label>
+    </div>
+    <div class="form-floating mb-3 col-sm-5">
+      <input type="text" class="form-control" id="specialSkill" placeholder="Special Skill" required>
+      <label for="floatingInput">Special Skill</label>
+    </div>
+    <div class="form-floating mb-3 col-sm-5">
+      <input type="text" class="form-control" id="type" placeholder="Type of Pet" required>
+      <label for="floatingInput">Type</label>
+    </div>
+    <div class="form-floating mb-3 col-sm-5">
+      <input type="url" class="form-control" id="imageUrl" placeholder="Image URL" required>
+      <label for="floatingInput">Image URL</label>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit pet</button>
+      </div>
+    </div>
+  </form>
+</div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="main.js"></script>
 </body>
