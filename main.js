@@ -248,20 +248,8 @@ const pets = [
   const showCats = document.querySelector('#cats');
   const showDinos = document.querySelector('#dinos');
   const showAll = document.querySelector('#show-all');
+  const form = document.querySelector('form');
   
-  for (let i = 0; i < pets.length; i++) {
-  document.querySelector("#app").innerHTML +=    
-  `<div class="card text-center border-success mb-3" style="width: 18rem;">
-    <h5 class="card-header text-bg-success p-3">${pets[i].name}</h5>
-    <img src="${pets[i].imageUrl}" class="card-img-top">
-    <div class="card-body">
-      <p class="card-text"><span class="bold">Color:</span> ${pets[i].color}</p>
-      <p class="card-text"><span class="bold">Special Skill:</span> ${pets[i].specialSkill}</p>
-      <p class="card-footer text-bg-danger p-3">${pets[i].type}</p>
-    </div>
-  </div>`
-  }
-
   const renderToDom = (divId, htmlToRender) => {
     const selectedDiv = document.querySelector(divId);
     selectedDiv.innerHTML = htmlToRender;
@@ -276,22 +264,25 @@ const pets = [
       <div class="card-body">
         <p class="card-text"><span class="bold">Color:</span> ${pets.color}</p>
         <p class="card-text"><span class="bold">Special Skill:</span> ${pets.specialSkill}</p>
-        <p class="card-footer text-bg-danger p-3">${pets.type}</p>
       </div>
+      <p class="card-footer text-bg-info p-3">${pets.type}</p>
+      <button class="btn btn-danger" id="delete--${pets.id}">Delete</button>
     </div>`;
     }
     renderToDom("#app", domString);
   }
 
-  const filter = (array, typeString) => {
-    const petArray = [];
-    for (const pet of array) {
-      if (pet.type === typeString) {
-        petArray.push(pet);
-      }
+  cardsOnDom(pets);
+
+  function filter(array, typeString) {
+  const petArray = [];
+  for (const pet of array) {
+    if (pet.type === typeString) {
+      petArray.push(pet);
     }
-    return petArray;
   }
+  return petArray;
+}
 
   showDogs.addEventListener('click', () => {
     const adoptDogs = filter(pets, 'dog');
@@ -312,7 +303,6 @@ const pets = [
     cardsOnDom(pets);
   })
 
-const form = document.querySelector('form');
 
 const createPet = (e) => {
   e.preventDefault();
@@ -330,3 +320,19 @@ const createPet = (e) => {
 }
 
 form.addEventListener('submit', createPet);
+
+app.addEventListener('click', (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+    const index = pets.findIndex(e => e.id === Number(id));
+    pets.splice(index, 1);
+    cardsOnDom(pets);
+  }
+});
+
+const startApp = () => {
+  cardsOnDom(pets);
+}
+
+
+startApp();
